@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        target: [target-ip1, target-ip2, target-ip3, target-ip4, target-ip5]  # Add more targets as needed
+        target: [in.shulker.in]  # Add more targets as needed
 
     steps:
     - name: Checkout code
